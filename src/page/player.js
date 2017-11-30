@@ -3,6 +3,7 @@ import ReactPlayer from 'react-player';
 import Progress from '../components/progress';
 import './player.less';
 import MusicList from '../config/config';
+import { Link } from 'react-router-dom';
 class Player extends Component{
     static defaultProps = {
         
@@ -67,7 +68,7 @@ class Player extends Component{
                 ref="player"
                 volume={this.state.volume/100}
                 />
-                <h1 className="caption">我的私人音乐坊 &gt;</h1>
+                <h1 className="caption"><Link to="/musiclist">我的私人音乐坊 &gt;</Link></h1>
                 <div className="mt20 row">
                 	<div className="controll-wrapper">
                 		<h2 className="music-title">{this.state.currentMusitItem.title}</h2>
