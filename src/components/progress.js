@@ -14,6 +14,7 @@ class Progress extends Component{
 
         let progressBar = this.refs.progressBar;
         let progress = (e.clientX - progressBar.getBoundingClientRect().left) / progressBar.clientWidth;
+        
         this.props.onProgressChange(progress);
     }
     render() {

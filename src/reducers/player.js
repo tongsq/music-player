@@ -11,7 +11,7 @@ const initialState = {
 
 export default (state = initialState, action)=>{
 	if (action.type === 'updateProgress'){
-		return {...state, progress:action.progress}
+		return {...state, ...action}
 	}else if(action.type === 'playNext'){
 		let index = state.musicList.indexOf(state.currentItem)
 		let newIndex = (index + 1) % state.musicList.length
@@ -31,7 +31,10 @@ export default (state = initialState, action)=>{
 		return {...state, volume:action.volume}
 	}
 	else if(action.type === 'progressChange'){
-		return {...state, changeProgressTo:action.progress}
+		return {...state, changeProgressTo:action.changeProgressTo, progress:action.changeProgressTo * 100, isPlay: true}
+	}
+	else if(action.type === 'changeProgressSucc'){
+		return {...state, changeProgressTo:false}
 	}
 	else{
 		return state

@@ -3,17 +3,17 @@ import {connect} from 'react-redux';
 import ReactPlayer from 'react-player';
 import {bindActionCreators} from 'redux';
 
-import {updateProgressAction} from '../actions';
+import {updateProgressAction,changeProgressSuccAction} from '../actions';
 class Player extends Component{
 
 	componentWillUpdate(newProps){
-		console.log(newProps);
+
 		if (newProps.changeProgressTo !== false){
-			console.log(newProps.changeProgressTo);
+			
 			//选择播放进度
 			this.refs.player.seekTo(newProps.changeProgressTo);
-			//及时更新进度条显示
-			this.props.onProgress({progress:newProps.changeProgressTo});
+			//更新完成
+			this.props.changeProgressSucc();
 		}
 		
 	}
@@ -39,12 +39,13 @@ const mapStateToProps = state =>{
         currentItem: player.currentItem,
         isPlay: player.isPlay,
         volume: player.volume,
-        changeProgressTo: player.changeProgressTo
+		changeProgressTo: player.changeProgressTo
     }
 }
 const mapDispatchToProps = dispatch =>{
     return bindActionCreators({
-    	onProgress: updateProgressAction 
+		onProgress: updateProgressAction,
+		changeProgressSucc: changeProgressSuccAction 
     }, dispatch);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Player);
