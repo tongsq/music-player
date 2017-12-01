@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+//import {connect} from 'react-redux';
 
 import MusicListItem from '../components/musiclistitem';
 import './musiclist.less';
@@ -7,7 +8,7 @@ class MusicList extends Component{
     render(){
         return (
             <ul className="musiclist-page">
-                {MusicListData.map(item=><MusicListItem data={item} />)}
+                {MusicListData.map((item,index)=><MusicListItem item={item} key={index}/>)}
             </ul>
         );
     }
