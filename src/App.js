@@ -9,9 +9,9 @@ import store from './store';
 //import logo from './logo.svg';
 import './App.css';
 import Header from './components/header';
-import Player from './page/player';
+import PlayerPage from './page/player';
 import MusicListPage from './page/musiclist';
-
+import Player from './components/player';
 class App extends Component {
   
   componentDidMount(){
@@ -27,7 +27,8 @@ class App extends Component {
         <Router>
           <div>
             <Header />
-            <Route exact path="/" component={Player} />
+            <Player />
+            <Route exact path="/" component={PlayerPage} />
             <Route path="/musiclist" component={MusicListPage} />
 
           </div>

@@ -5,7 +5,7 @@ import './musiclistitem.less';
 import {playItemAction} from '../actions';
 const MusicListItemTitle = (props)=>{
     return (
-        <p className="music-title" onClick={props.playItem}>{props.title}<span className="music-artist"> - {props.artist}</span></p>
+        <p className={`music-title ${props.active ? 'active':''}`} onClick={props.playItem}>{props.title}<span className="music-artist"> - {props.artist}</span></p>
         );
 }
 class MusicListItem extends Component{
@@ -15,8 +15,12 @@ class MusicListItem extends Component{
     
     render(){
         return (
-            <li className={`row components-musiclistitem ${this.props.item===this.props.currentItem ? 'active':''}`}>
-            <MusicListItemTitle title={this.props.item.title} artist={this.props.item.artist} playItem={()=>this.props.playItem(this.props.item)}/>
+            <li className="row components-musiclistitem">
+            <MusicListItemTitle 
+                title={this.props.item.title} 
+                artist={this.props.item.artist} 
+                playItem={()=>this.props.playItem(this.props.item)}
+                active={this.props.item===this.props.currentItem}/>
             </li>
         );
     }
