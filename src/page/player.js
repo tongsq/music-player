@@ -41,7 +41,7 @@ class PlayerPage extends Component{
               		</div>
               		<div className="mt35 row">
               			<div>
-                			<i className="icon prev" onClick={()=>this.props.playPrev}></i>
+                			<i className="icon prev" onClick={this.props.playPrev}></i>
                 			<i className={`icon ml20 ${this.props.isPlay ? 'pause' : 'play'}`} onClick={this.props.togglePlay}></i>
                 			<i className="icon next ml20" onClick={this.props.playNext}></i>
               			</div>

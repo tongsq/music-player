@@ -1,4 +1,4 @@
-import musicList from '../config/config'
+import musicList from '../config/musiclist'
 
 const initialState = {
 	currentItem: musicList[0],
@@ -22,7 +22,7 @@ export default (state = initialState, action)=>{
 		let newIndex = (index - 1 + length) % length
 		return {...state, currentItem:state.musicList[newIndex]}
 	}else if(action.type === 'playItem'){
-		return {...state, currentItem:action.item}
+		return {...state, currentItem:action.item, isPlay: true}
 	}
 	else if(action.type === 'togglePlay'){
 		return {...state, isPlay: !state.isPlay}

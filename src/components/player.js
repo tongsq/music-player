@@ -6,7 +6,7 @@ import {bindActionCreators} from 'redux';
 import {updateProgressAction,changeProgressSuccAction} from '../actions';
 class Player extends Component{
 
-	componentWillUpdate(newProps){
+	componentWillReceiveProps(newProps){
 
 		if (newProps.changeProgressTo !== false){
 			
