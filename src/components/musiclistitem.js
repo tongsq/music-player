@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import './musiclistitem.less';
-import {playItemAction} from '../actions';
+import {playItem} from '../actions';
 const MusicListItemTitle = (props)=>{
     return (
         <p className={`music-title ${props.active ? 'active':''}`} onClick={props.playItem}>{props.title}<span className="music-artist"> - {props.artist}</span></p>
@@ -32,11 +32,6 @@ const mapStateToProps = state =>{
     }
 }
 const mapDispatchToProps = dispatch =>{
-    // return{
-    //     playItem: item =>{
-    //         dispatch(playItemAction(item))
-    //     }
-    // }
-    return bindActionCreators({playItem:playItemAction}, dispatch);
+    return bindActionCreators({playItem}, dispatch);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(MusicListItem);

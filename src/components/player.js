@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import ReactPlayer from 'react-player';
 import {bindActionCreators} from 'redux';
 
-import {updateProgressAction,changeProgressSuccAction} from '../actions';
+import {updateProgress,changeProgressSucc} from '../actions';
 class Player extends Component{
 
 	componentWillReceiveProps(newProps){
@@ -44,8 +44,8 @@ const mapStateToProps = state =>{
 }
 const mapDispatchToProps = dispatch =>{
     return bindActionCreators({
-		onProgress: updateProgressAction,
-		changeProgressSucc: changeProgressSuccAction 
+		onProgress: updateProgress,
+		changeProgressSucc: changeProgressSucc 
     }, dispatch);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Player);

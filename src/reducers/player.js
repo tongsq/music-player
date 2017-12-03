@@ -15,14 +15,14 @@ export default (state = initialState, action)=>{
 	}else if(action.type === 'playNext'){
 		let index = state.musicList.indexOf(state.currentItem)
 		let newIndex = (index + 1) % state.musicList.length
-		return {...state, currentItem:state.musicList[newIndex]}
+		return {...state, currentItem:state.musicList[newIndex], progress:0}
 	}else if(action.type === 'playPrev'){
 		let index = state.musicList.indexOf(state.currentItem)
 		let length = state.musicList.length
 		let newIndex = (index - 1 + length) % length
-		return {...state, currentItem:state.musicList[newIndex]}
+		return {...state, currentItem:state.musicList[newIndex], progress:0}
 	}else if(action.type === 'playItem'){
-		return {...state, currentItem:action.item, isPlay: true}
+		return {...state, currentItem:action.item, isPlay: true, progress:0}
 	}
 	else if(action.type === 'togglePlay'){
 		return {...state, isPlay: !state.isPlay}

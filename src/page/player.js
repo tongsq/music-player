@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import Progress from '../components/progress';
 import './player.less';
 import { Link } from 'react-router-dom';
-import {playNextAction,playPrevAction,togglePlayAction, progressChangeAction,volumeChangeAction} from '../actions'
+import {playNext,playPrev,togglePlay, progressChange,volumeChange} from '../actions'
 class PlayerPage extends Component{
     static defaultProps = {
         
@@ -70,11 +70,11 @@ const mapStateToProps = state =>{
 }
 const mapDispatchToProps = dispatch =>{
     return bindActionCreators({
-      playNext: playNextAction,
-      playPrev: playPrevAction,
-      togglePlay: togglePlayAction,
-      progressChangeHandler: progressChangeAction,
-      volumeChangeHandler: volumeChangeAction
+      playNext: playNext,
+      playPrev: playPrev,
+      togglePlay,
+      progressChangeHandler: progressChange,
+      volumeChangeHandler: volumeChange
     }, dispatch);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(PlayerPage);
