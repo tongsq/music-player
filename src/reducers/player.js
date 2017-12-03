@@ -6,7 +6,8 @@ const initialState = {
 	isPlay:false,
 	progress:0,
 	volume:50,
-	changeProgressTo:false
+	changeProgressTo:false,
+	playStyle:"rand",
 }
 
 export default (state = initialState, action)=>{
@@ -35,6 +36,11 @@ export default (state = initialState, action)=>{
 	}
 	else if(action.type === 'changeProgressSucc'){
 		return {...state, changeProgressTo:false}
+	}else if(action.type === 'togglePlayStyle'){
+		let styleList = ["rand", "single", "list"]
+		let index = styleList.indexOf(state.playStyle)
+		let newIndex = (index + 1) % styleList.length
+		return {...state, playStyle: styleList[newIndex]}
 	}
 	else{
 		return state

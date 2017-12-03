@@ -3,7 +3,7 @@ import {createLogger} from 'redux-logger';
 
 import reducer from './reducers';
 
-const IS_DEV = true
+const IS_DEV = false
 const middlewares = [];
 if (IS_DEV) {
     middlewares.push(createLogger({

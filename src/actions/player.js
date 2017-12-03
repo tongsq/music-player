@@ -23,6 +23,9 @@ export const progressChange = progress =>{
 export const volumeChange = volume =>{
 	return {'type': 'volumeChange',volume:Math.round(volume * 10000) / 100}
 }
-export const changeProgressSucc = ()=>{
+export const changeProgressSucc = () =>{
 	return {'type': 'changeProgressSucc'};
+}
+export const togglePlayStyle = () =>{
+	return {'type': 'togglePlayStyle'}
 }

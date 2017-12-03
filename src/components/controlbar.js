@@ -1,26 +1,64 @@
 import React,{Component} from 'react'
-import './controlbar.less'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
-const ControlItem = props => {
-    return <li className={`iconfont_music fs20 inline ${props.color}`}>{props.value}</li>
+import './controlbar.less'
+import {playPrev,playNext,togglePlay,togglePlayStyle} from '../actions'
+
+class ControlItem extends Component{
+    static defaultProps = {
+        color: '',
+        clickHandle: ()=>{}    
+    }
+    render(){
+        return <li className={`iconfont_music click-item ${this.props.color}`} onClick={this.props.clickHandle}>{this.props.value}</li>
+    }
 }
 class ControlBar extends Component{
 
     render(){
+        let playIcon = "\ue607"
+        if (this.props.isPlay){
+            playIcon = "\ue606"
+        }
+        let playStyle = "\ue60b"
+        if (this.props.playStyle === "single"){
+            playStyle = "\ue609"
+        }else if(this.props.playStyle === "list"){
+            playStyle = "\ue60a"
+        }
         return(
             <div className="row components-controlbar">
                 <div className=""></div>
                 <ul className="control-part1 -col-auto">
                     <ControlItem value="&#xe60d;" />
-                    <ControlItem value="&#xe60b;" />
+                    <ControlItem value={playStyle} clickHandle={this.props.togglePlayStyle}/>
                 </ul>
                 <ul className="control-part2 -col-auto">
-                    <ControlItem value="&#xe605;" />
-                    <ControlItem value="&#xe607;" color="dark"/>
-                    <ControlItem value="&#xe608;" />
+                    <ControlItem value="&#xe605;" clickHandle={this.props.playPrev}/>
+                    <ControlItem value={playIcon} color="dark" clickHandle={this.props.togglePlay}/>
+                    <ControlItem value="&#xe608;" clickHandle={this.props.playNext}/>
                 </ul>
             </div>
         );
     }
 }
-export default ControlBar;
+const mapStateToProps = state =>{
+    let {player} = state
+    return{
+        
+        isPlay: player.isPlay,
+        volume: player.volume,
+        playStyle: player.playStyle,
+		//changeProgressTo: player.changeProgressTo
+    }
+}
+const mapDispatchToProps = dispatch =>{
+    return bindActionCreators({
+        playPrev,
+        playNext,
+        togglePlay,
+        togglePlayStyle
+    }, dispatch);
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ControlBar);

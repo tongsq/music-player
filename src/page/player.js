@@ -40,14 +40,7 @@ class PlayerPage extends Component{
 		                </Progress>
               		</div>
               		<div className="mt35 row">
-              			<div>
-                			<i className="icon prev" onClick={this.props.playPrev}></i>
-                			<i className={`icon ml20 ${this.props.isPlay ? 'pause' : 'play'}`} onClick={this.props.togglePlay}></i>
-                			<i className="icon next ml20" onClick={this.props.playNext}></i>
-              			</div>
-              			<div className="-col-auto">
-              				<i className={`icon repeat-${this.props.repeatType}`} onClick={this.changeRepeat}></i>
-              			</div>
+              			
               		</div>
               	</div>
               	<div className="-col-auto cover">
