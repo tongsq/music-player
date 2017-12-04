@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import ReactPlayer from 'react-player';
 import {bindActionCreators} from 'redux';
 
-import {updateProgress,changeProgressSucc} from '../actions';
+import {updateProgress,changeProgressSucc,playNext} from '../actions';
 class Player extends Component{
 
 	componentWillReceiveProps(newProps){
@@ -18,6 +18,10 @@ class Player extends Component{
 		
 	}
 	render(){
+		let loop = false
+		if (this.props.playStyle === 'single'){
+			loop = true
+		}
 		return (
 			<div>
 				<ReactPlayer 
@@ -27,7 +31,10 @@ class Player extends Component{
 	                width="0"
 	                height="0"
 	                volume={this.props.volume/100}
+	                muted={this.props.muted}
 	                ref="player"
+	                loop={loop}
+	                onEnded={this.props.playNext}
 	            />
    			</div>
 			);
@@ -39,13 +46,16 @@ const mapStateToProps = state =>{
         currentItem: player.currentItem,
         isPlay: player.isPlay,
         volume: player.volume,
-		changeProgressTo: player.changeProgressTo
+		changeProgressTo: player.changeProgressTo,
+		playStyle: player.playStyle,
+		muted: player.muted
     }
 }
 const mapDispatchToProps = dispatch =>{
     return bindActionCreators({
 		onProgress: updateProgress,
-		changeProgressSucc: changeProgressSucc 
+		changeProgressSucc: changeProgressSucc,
+		playNext
     }, dispatch);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Player);

@@ -23,9 +23,9 @@ class ControlBar extends Component{
         }
         let playStyle = "\ue60b"
         if (this.props.playStyle === "single"){
-            playStyle = "\ue609"
-        }else if(this.props.playStyle === "list"){
             playStyle = "\ue60a"
+        }else if(this.props.playStyle === "list"){
+            playStyle = "\ue609"
         }
         return(
             <div className="row components-controlbar">

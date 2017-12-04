@@ -8,6 +8,7 @@ const initialState = {
 	volume:50,
 	changeProgressTo:false,
 	playStyle:"rand",
+	muted:false
 }
 
 export default (state = initialState, action)=>{
@@ -15,8 +16,22 @@ export default (state = initialState, action)=>{
 		return {...state, ...action}
 	}else if(action.type === 'playNext'){
 		let index = state.musicList.indexOf(state.currentItem)
-		let newIndex = (index + 1) % state.musicList.length
-		return {...state, currentItem:state.musicList[newIndex], progress:0}
+		let length = state.musicList.length
+		if (state.playStyle === "list"){
+			//列表循环
+			let newIndex = (index + 1) % length
+			return {...state, currentItem:state.musicList[newIndex], progress:0}
+		}else{
+			//随机播放
+			let newIndex = index
+			if (length>1){
+				while(newIndex === index || newIndex === length){
+					newIndex = Math.floor(Math.random() * length)
+				}
+			}
+			
+			return {...state, currentItem:state.musicList[newIndex], progress:0}
+		}
 	}else if(action.type === 'playPrev'){
 		let index = state.musicList.indexOf(state.currentItem)
 		let length = state.musicList.length
@@ -37,7 +52,7 @@ export default (state = initialState, action)=>{
 	else if(action.type === 'changeProgressSucc'){
 		return {...state, changeProgressTo:false}
 	}else if(action.type === 'togglePlayStyle'){
-		let styleList = ["rand", "single", "list"]
+		let styleList = ["rand", "list", "single"]
 		let index = styleList.indexOf(state.playStyle)
 		let newIndex = (index + 1) % styleList.length
 		return {...state, playStyle: styleList[newIndex]}

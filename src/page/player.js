@@ -63,8 +63,8 @@ const mapStateToProps = state =>{
 }
 const mapDispatchToProps = dispatch =>{
     return bindActionCreators({
-      playNext: playNext,
-      playPrev: playPrev,
+      playNext,
+      playPrev,
       togglePlay,
       progressChangeHandler: progressChange,
       volumeChangeHandler: volumeChange
