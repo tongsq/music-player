@@ -2,8 +2,8 @@ import {createStore,applyMiddleware} from 'redux';
 import {createLogger} from 'redux-logger';
 
 import reducer from './reducers';
+import {IS_DEV} from './config/const'
 
-const IS_DEV = false
 const middlewares = [];
 if (IS_DEV) {
     middlewares.push(createLogger({

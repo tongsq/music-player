@@ -7,6 +7,8 @@ import {Provider} from 'react-redux'
 
 import store from './store'
 import './App.css'
+import './assets/css/common.css'
+import './assets/css/reset.css'
 import Header from './components/header'
 import PlayerPage from './page/player'
 import MusicListPage from './page/musiclist'
@@ -15,7 +17,7 @@ import ControlBar from './components/controlbar'
 class App extends Component {
   
   componentDidMount(){
-
+    
   }
   componentWillUnMount(){
     
