@@ -13,7 +13,7 @@ import Header from './components/header'
 import PlayerPage from './page/player'
 import MusicListPage from './page/musiclist'
 import Player from './components/player'
-import ControlBar from './components/controlbar'
+import PlayerPage2 from './page/playerpage'
 class App extends Component {
   
   componentDidMount(){
@@ -32,7 +32,7 @@ class App extends Component {
             <Player />
             <Route exact path="/" component={PlayerPage} />
             <Route path="/musiclist" component={MusicListPage} />
-            <ControlBar />
+            <PlayerPage2 />
           </div>
         </Router>
       </Provider>
