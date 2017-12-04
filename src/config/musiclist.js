@@ -2,7 +2,7 @@ let host = '';
 export default  [
 	{
 		id: 1,
-		title: '隔水烟',
+		title: '隔烟水',
 		artist: '玄觞',
         file: host + 'static/data/隔烟水.mp3',
         cover: host + 'static/data/隔烟水.jpg'

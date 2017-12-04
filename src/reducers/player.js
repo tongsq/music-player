@@ -13,30 +13,46 @@ const initialState = {
 
 export default (state = initialState, action)=>{
 	if (action.type === 'updateProgress'){
-		return {...state, ...action}
+		return {...state, progress:state.progress}
 	}else if(action.type === 'playNext'){
 		let index = state.musicList.indexOf(state.currentItem)
 		let length = state.musicList.length
+		let newIndex = index
 		if (state.playStyle === "list"){
 			//列表循环
-			let newIndex = (index + 1) % length
-			return {...state, currentItem:state.musicList[newIndex], progress:0}
+			newIndex = (index + 1) % length
 		}else{
 			//随机播放
-			let newIndex = index
-			if (length>1){
+			if (length>1 && state.playStyle === "rand"){
 				while(newIndex === index || newIndex === length){
 					newIndex = Math.floor(Math.random() * length)
 				}
 			}
-			
-			return {...state, currentItem:state.musicList[newIndex], progress:0}
 		}
+		let result = {...state, currentItem:state.musicList[newIndex], progress:0}
+		if (index === newIndex){
+			result.changeProgressTo = 0;
+		}
+		return result
 	}else if(action.type === 'playPrev'){
 		let index = state.musicList.indexOf(state.currentItem)
 		let length = state.musicList.length
-		let newIndex = (index - 1 + length) % length
-		return {...state, currentItem:state.musicList[newIndex], progress:0}
+		let newIndex = index
+		if (state.playStyle === "list"){
+			newIndex = (index - 1 + length) % length
+		}else{
+			//随机播放
+			if (length>1 && state.playStyle === "rand"){
+				while(newIndex === index || newIndex === length){
+					newIndex = Math.floor(Math.random() * length)
+				}
+			}
+		}
+		let result =  {...state, currentItem:state.musicList[newIndex], progress:0}
+		if (index === newIndex){
+			result.changeProgressTo = 0
+		}
+		return result
 	}else if(action.type === 'playItem'){
 		return {...state, currentItem:action.item, isPlay: true, progress:0}
 	}

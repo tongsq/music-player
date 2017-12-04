@@ -8,11 +8,7 @@ export const playPrev = ()=>{
 	return {type: 'playPrev'}
 }
 export const updateProgress = (options)=>{
-	let result = {'type': 'updateProgress','progress':Math.round(options.played * 10000) / 100}
-	if(typeof options.changeProgressTo !== "undefined"){
-		result.changeProgressTo = options.changeProgressTo;
-	}
-	return result;
+	return {'type': 'updateProgress','progress':Math.round(options.played * 10000) / 100}
 }
 export const togglePlay = ()=>{
 	return {'type': 'togglePlay'}

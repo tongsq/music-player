@@ -17,9 +17,9 @@ class ControlItem extends Component{
 class ControlBar extends Component{
 
     render(){
-        let playIcon = "\ue607"
+        let playIcon = "\ue606"
         if (this.props.isPlay){
-            playIcon = "\ue606"
+            playIcon = "\ue607"
         }
         let playStyle = "\ue60b"
         if (this.props.playStyle === "single"){
