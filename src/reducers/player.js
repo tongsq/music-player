@@ -13,7 +13,7 @@ const initialState = {
 
 export default (state = initialState, action)=>{
 	if (action.type === 'updateProgress'){
-		return {...state, progress:state.progress}
+		return {...state, progress:action.progress}
 	}else if(action.type === 'playNext'){
 		let index = state.musicList.indexOf(state.currentItem)
 		let length = state.musicList.length
