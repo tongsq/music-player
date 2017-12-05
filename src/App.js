@@ -10,10 +10,9 @@ import './App.css'
 import './assets/css/common.css'
 import './assets/css/reset.css'
 import Header from './components/header'
-import PlayerPage from './page/player'
 import MusicListPage from './page/musiclist'
 import Player from './components/player'
-import PlayerPage2 from './page/playerpage'
+import PlayerPage from './page/playerpage'
 class App extends Component {
   
   componentDidMount(){
@@ -27,12 +26,10 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <div className="container center">
-            <Header />
+          <div className="container center mt50">
+            {/* <Header /> */}
             <Player />
-            <Route exact path="/" component={PlayerPage} />
-            <Route path="/musiclist" component={MusicListPage} />
-            <PlayerPage2 />
+            <PlayerPage />
           </div>
         </Router>
       </Provider>

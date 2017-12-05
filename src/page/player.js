@@ -18,30 +18,6 @@ class PlayerPage extends Component{
               	<div className="controll-wrapper">
               		<h2 className="music-title">{this.props.currentItem.title}</h2>
               		<h3 className="music-artist mt10">{this.props.currentItem.artist}</h3>
-              		<div className="row mt20">
-              			<div className="left-time -col-auto">-{"leftTime"}</div>
-              			<div className="volume-container">
-              				<i className="icon-volume rt" style={{top: 5, left: -5}}></i>
-              				<div className="volume-wrapper">
-				                <Progress
-									progress={this.props.volume}
-									onProgressChange={this.props.volumeChangeHandler}
-								
-				                >
-				                </Progress>
-              				</div>
-              			</div>
-              		</div>
-              		<div style={{height: 10, lineHeight: '10px', marginTop:'20px'}}>
-		                <Progress
-							progress={this.props.progress}
-							onProgressChange={this.props.progressChangeHandler}
-		                >
-		                </Progress>
-              		</div>
-              		<div className="mt35 row">
-              			
-              		</div>
               	</div>
               	<div className="-col-auto cover">
               		<img src={this.props.currentItem.cover} alt={this.props.currentItem.title}/>

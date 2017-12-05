@@ -4,6 +4,7 @@ import {bindActionCreators} from 'redux'
 
 import './controlbar.less'
 import {playPrev,playNext,togglePlay,togglePlayStyle} from '../actions'
+import musicLogo from '../assets/image/logo.png'
 
 class ControlItem extends Component{
     static defaultProps = {
@@ -29,6 +30,9 @@ class ControlBar extends Component{
         }
         return(
             <div className="row components-controlbar">
+                <div className="left-img">
+                    <img src={musicLogo} alt=""/>
+                </div>
                 <div className=""></div>
                 <ul className="control-part1 -col-auto">
                     <ControlItem value="&#xe60d;" />
