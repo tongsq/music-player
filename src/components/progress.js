@@ -36,13 +36,15 @@ export class PlayProgress extends Component{
     changeProgress(e){
         let progressBar = this.refs.progressBar;
         let progress = (e.clientX - progressBar.getBoundingClientRect().left) / progressBar.clientWidth;      
-        this.props.onProgressChange(progress);
+        this.props.onProgressChange(progress.toFixed(4));
     }
     render() {
         return (
-            <div className="components-playprogress" ref="progressBar" onClick={this.changeProgress}>
-                <div className="progress" style={{width:`${this.props.progress}%`}}
-                ></div>
+            <div className="components-playprogress-body" ref="progressBar" onClick={this.changeProgress}>
+                <div className="components-playprogress">
+                    <div className="progress" style={{width:`${this.props.progress}%`}}
+                    ></div>
+                </div>
             </div>
         );
     }

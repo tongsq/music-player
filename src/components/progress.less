@@ -10,20 +10,27 @@
         //background: #2f9842;
     }
 }
-
-.components-playprogress {
-    width: 100%;
-    height: 3px;
-    background: #c1b4cc80;
-    cursor: pointer;
-    margin-top: -3px;
+.components-playprogress-body{
+    height: 18px;
+    margin-bottom: -15px;
     position: relative;
-    bottom: -1px;
-    z-index: 100;
-    .progress {
-        width: 0%;
-        height: 100%;
-        background: #ff8eab90;
-        z-index: 110;
+    cursor: pointer;
+    .components-playprogress {
+        width: 100%;
+        height: 3px;
+        background: #c1b4cc80;
+        //background: #c1b4cc;
+        //opacity: 0.8;
+        cursor: pointer;
+        margin-top: -3px;
+        position: relative;
+        bottom: -1px;
+        z-index: 100;
+        .progress {
+            width: 0%;
+            height: 100%;
+            background: #ff8eab90;
+            z-index: 110;
+        }
     }
 }
