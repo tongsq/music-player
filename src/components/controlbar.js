@@ -19,8 +19,10 @@ class ControlBar extends Component{
 
     render(){
         let playIcon = "\ue606"
+        let playColor = "red"
         if (this.props.isPlay){
             playIcon = "\ue607"
+            playColor = "dark"
         }
         let playStyle = "\ue60b"
         if (this.props.playStyle === "single"){
@@ -40,7 +42,7 @@ class ControlBar extends Component{
                 </ul>
                 <ul className="control-part2 -col-auto">
                     <ControlItem value="&#xe605;" clickHandle={this.props.playPrev}/>
-                    <ControlItem value={playIcon} color="dark" clickHandle={this.props.togglePlay}/>
+                    <ControlItem value={playIcon} color={playColor} clickHandle={this.props.togglePlay}/>
                     <ControlItem value="&#xe608;" clickHandle={this.props.playNext}/>
                 </ul>
             </div>

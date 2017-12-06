@@ -23,7 +23,11 @@ class CoverImg extends Component{
         }
         this.onLoadError = this.onLoadError.bind(this)
     }
-
+    componentWillReceiveProps(newProps){
+        if (this.props.src !== newProps.src){
+            this.setState({src:newProps.src})
+        }
+    }
     onLoadError() {
         this.setState({
             src: errorImg
@@ -40,7 +44,7 @@ class PlayerPage extends Component{
     render(){
         return (
             <div>
-                <div style={{height:"600px",background:"#806e98"}}>
+                <div className="playerpage">
                     <Route path="/musiclist" component={MusicListPage} />
                     <div className="row">
                     <div className="-col-auto cover">
