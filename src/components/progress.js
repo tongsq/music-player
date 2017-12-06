@@ -27,7 +27,9 @@ class Progress extends Component{
     }
 }
 export class PlayProgress extends Component{
-    
+    static defaultProps = {
+        isActive: false
+    }
     constructor(props){
         super(props);
         this.changeProgress = this.changeProgress.bind(this);
@@ -39,11 +41,13 @@ export class PlayProgress extends Component{
         this.props.onProgressChange(progress.toFixed(4));
     }
     render() {
+
         return (
             <div className="components-playprogress-body" ref="progressBar" onClick={this.changeProgress}>
                 <div className="components-playprogress">
-                    <div className="progress" style={{width:`${this.props.progress}%`}}
-                    ></div>
+                    <div className="progress" style={{width:`${this.props.progress}%`}}>
+                        <i className={this.props.isActive? "active":""}></i>
+                    </div>
                 </div>
             </div>
         );
