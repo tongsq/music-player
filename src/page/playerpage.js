@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import {Route} from 'react-router'
 
-import ControllBar from '../components/controlbar'
 import {PlayProgress} from '../components/progress'
 import {progressChange} from '../actions'
 import MusicListPage from './musiclist'
@@ -43,23 +42,21 @@ class PlayerPage extends Component{
 
     render(){
         return (
-            <div>
-                <div className="playerpage">
-                    <Route path="/musiclist" component={MusicListPage} />
-                    <div className="row">
-                    <div className="-col-auto cover">
-              		<CoverImg src={this.props.currentItem.cover} alt={this.props.currentItem.title} isActive={this.props.isPlay}/>
-                	</div>
+            <div className="playerpage-container">
+                <div className="glass"></div>
+                    <div className="playerpage">
+                        <Route path="/musiclist" component={MusicListPage} />
+                        <div className="row">
+                        <div className="-col-auto cover">
+                  		<CoverImg src={this.props.currentItem.cover} alt={this.props.currentItem.title} isActive={this.props.isPlay}/>
+                    	</div>
+                        </div>
                     </div>
-                </div>
-                <PlayProgress
-					progress={this.props.progress}
-                    onProgressChange={this.props.progressChange}
-                    isActive={this.props.isPlay ? true:false}
-		        />
-                <div style={{marginTop: "0px"}}>
-                <ControllBar />
-                </div>
+                    <PlayProgress
+    					progress={this.props.progress}
+                        onProgressChange={this.props.progressChange}
+                        isActive={this.props.isPlay ? true:false}
+    		        />
             </div>
         )
     }

@@ -1,6 +1,19 @@
-.playerpage{
-    height:600px;
+.playerpage-container{
+	height:600px;
     background:url('../assets/image/bk.jpg');
+    //background-attachment: fixed;
+   	background-repeat: no-repead;
+    .glass{
+    	-webkit-filter: blur(3px);
+    	filter: blur(3px);
+    	height:100%;
+    	background:inherit;
+    }
+}
+.playerpage{
+    position: relative;
+    margin-top: -600px;
+    height: 100%;
 }
 .cover {
     width: 180px;

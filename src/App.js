@@ -13,6 +13,7 @@ import Header from './components/header'
 import MusicListPage from './page/musiclist'
 import Player from './components/player'
 import PlayerPage from './page/playerpage'
+import ControllBar from './components/controlbar'
 class App extends Component {
   
   componentDidMount(){
@@ -30,6 +31,7 @@ class App extends Component {
             {/* <Header /> */}
             <Player />
             <PlayerPage />
+            <ControllBar />
           </div>
         </Router>
       </Provider>
