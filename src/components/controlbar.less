@@ -23,24 +23,30 @@
         padding-left: 20px;
         font-size: 22px;
         cursor: pointer;
+        user-select: none;
         //text-shadow: 0 0 1px;
+    }
+    .common-item{
         &:hover{
             color: #155fd4;
             text-shadow: 0 0 1px;
         }
     }
-    .ccc{
-        color: #ccc;
-    }
-    .ddd{
-        color: #ddd;
-    }
-    .dark{
+    .play-item-active{
         color: #787474;
+        &:hover{
+            color: #155fd4;
+            text-shadow: 0 0 1px;
+        }
     }
-    .red{
+    .play-item-notactive{
+        color: #ddd;
         color:#e0245e;
         font-size: 20px;
         text-shadow: 0 0 10px;
+        &:hover{
+            text-shadow: 0 0 1px;
+        }
     }
+
 }
