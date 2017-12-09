@@ -1,16 +1,26 @@
-import React from 'react';
+import React,{Component} from 'react';
 import {connect} from 'react-redux';
 
 import MusicListItem from '../components/musiclistitem';
 import './musiclist.less';
 
-const MusicList = (props) => {
-    
-    return (
-        <ul className="musiclist-page">
-            {props.MusicListData.map((item,index)=><MusicListItem item={item} key={index}/>)}
-        </ul>
-    );
+class MusicList extends Component{
+    constructor(props){
+    	super(props)
+    	this.state = {
+    		opacity: 0
+    	}
+    }
+    componentDidMount(){
+    	this.setState({opacity:1})
+    }
+    render(){
+	    return (
+	        <ul className="musiclist-page" style={{opacity:this.state.opacity}}>
+	            {this.props.MusicListData.map((item,index)=><MusicListItem item={item} key={index}/>)}
+	        </ul>
+	    );
+    }
 }
 const mapStateToProps = state =>{
     return {MusicListData: state.player.musicList}

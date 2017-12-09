@@ -30,8 +30,11 @@ class App extends Component {
           <div className="container center mt50">
             {/* <Header /> */}
             <Player />
-            <PlayerPage />
-            <ControllBar />
+            <div className="body-container">
+            <Route path="/musiclist" component={MusicListPage} />
+            <Route path="/" exact component={PlayerPage} />
+            </div>
+            <Route path="/" component={ControllBar} />
           </div>
         </Router>
       </Provider>

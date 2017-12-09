@@ -45,7 +45,6 @@ class PlayerPage extends Component{
             <div className="playerpage-container">
                 <div className="glass"></div>
                     <div className="playerpage">
-                        <Route path="/musiclist" component={MusicListPage} />
                         <div className="row">
                         <div className="-col-auto cover">
                   		<CoverImg src={this.props.currentItem.cover} alt={this.props.currentItem.title} isActive={this.props.isPlay}/>

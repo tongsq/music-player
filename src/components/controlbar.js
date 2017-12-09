@@ -24,16 +24,19 @@ class ShowListItem extends Component{
     }
     showList(){
         console.log(this.props)
-        if (this.props.location.pathname !== "/musiclist"){
-            this.props.history.push("/musiclist")
-        }else{
+        if (this.props.match){
             this.props.history.goBack()
+        }else{
+            this.props.history.push("/musiclist")
         }
         
     }
     render(){
+        let diyStyle = ''
+        if (this.props.match)
+            diyStyle = 'onhover'
         return(
-            <ControlItem value="&#xe60d;" clickHandle={this.showList}/>
+            <ControlItem value="&#xe60d;" diyStyle={diyStyle} clickHandle={this.showList}/>
         )
     }
 }
@@ -60,7 +63,7 @@ class ControlBar extends Component{
                 </div>
                 <div className=""></div>
                 <ul className="control-part1 -col-auto">
-                    <Route path="/" children={props=>(<ShowListItem {...props} />)}/>
+                    <Route path="/musiclist" exact children={props=>(<ShowListItem {...props} />)}/>
                     <ControlItem value={playStyle} clickHandle={this.props.togglePlayStyle}/>
                 </ul>
                 <ul className="control-part2 -col-auto">
