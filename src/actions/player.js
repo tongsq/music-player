@@ -16,6 +16,9 @@ export const togglePlay = ()=>{
 export const progressChange = progress =>{
 	return {'type': 'progressChange', changeProgressTo:progress}
 }
+export const progressChangeStore = progress =>{
+	return {'type': 'progressChangeStore', changeProgressTo:progress}
+}
 export const volumeChange = volume =>{
 	return {'type': 'volumeChange',volume:Math.round(volume * 10000) / 100}
 }

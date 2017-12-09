@@ -10,12 +10,11 @@ const initialState = {
 	playStyle:"rand",
 	muted:false
 }
-
 export default (state = initialState, action)=>{
 	if (action.type === 'updateProgress'){
 		return {...state, progress:action.progress}
 	}else if(action.type === 'playNext'){
-		let index = state.musicList.indexOf(state.currentItem)
+		let index = findIndex(state.musicList, state.currentItem)
 		let length = state.musicList.length
 		let newIndex = index
 		if (state.playStyle === "list"){
@@ -35,7 +34,7 @@ export default (state = initialState, action)=>{
 		}
 		return result
 	}else if(action.type === 'playPrev'){
-		let index = state.musicList.indexOf(state.currentItem)
+		let index = findIndex(state.musicList, state.currentItem)
 		let length = state.musicList.length
 		let newIndex = index
 		if (state.playStyle === "list"){
@@ -65,6 +64,9 @@ export default (state = initialState, action)=>{
 	else if(action.type === 'progressChange'){
 		return {...state, changeProgressTo:action.changeProgressTo, progress:action.changeProgressTo * 100, isPlay: true}
 	}
+	else if(action.type === 'progressChangeStore'){
+		return {...state, changeProgressTo:action.changeProgressTo}
+	}
 	else if(action.type === 'changeProgressSucc'){
 		return {...state, changeProgressTo:false}
 	}else if(action.type === 'togglePlayStyle'){
@@ -76,4 +78,12 @@ export default (state = initialState, action)=>{
 	else{
 		return state
 	}
+}
+function findIndex(list, item){
+	for(let i=0; i<list.length; i++){
+		if (list[i].id === item.id && list[i].file === item.file){
+			return i
+		}
+	}
+	return 0
 }

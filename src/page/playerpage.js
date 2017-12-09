@@ -1,11 +1,9 @@
 import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {Route} from 'react-router'
 
 import {PlayProgress} from '../components/progress'
 import {progressChange} from '../actions'
-import MusicListPage from './musiclist'
 import './playerpage.less'
 import errorImg from '../assets/image/logo.png'
 

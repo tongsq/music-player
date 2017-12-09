@@ -9,7 +9,6 @@ import store from './store'
 import './App.css'
 import './assets/css/common.css'
 import './assets/css/reset.css'
-import Header from './components/header'
 import MusicListPage from './page/musiclist'
 import Player from './components/player'
 import PlayerPage from './page/playerpage'
@@ -28,7 +27,6 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="container center mt50">
-            {/* <Header /> */}
             <Player />
             <div className="body-container">
             <Route path="/musiclist" component={MusicListPage} />

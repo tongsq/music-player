@@ -5,18 +5,33 @@ import {bindActionCreators} from 'redux';
 
 import {updateProgress,changeProgressSucc,playNext} from '../actions';
 class Player extends Component{
-
+	constructor(props){
+		super(props)
+		this.onReady = this.onReady.bind(this)
+	}
 	componentWillReceiveProps(newProps){
-
 		if (newProps.changeProgressTo !== false){
 			
 			//选择播放进度
-			this.refs.player.seekTo(newProps.changeProgressTo);
-			//更新完成
-			this.props.changeProgressSucc();
+			let changeTo = newProps.changeProgressTo
+			let player = this.refs.player
+			if ((changeTo>=0) && (changeTo <=1)){
+				let duration = player.getDuration();
+				if (duration){
+					player.seekTo(changeTo);
+					this.props.changeProgressSucc();
+				}
+			}
 		}
 		
 	}
+	onReady(){
+		if (this.props.changeProgressTo !== false){
+			this.refs.player.seekTo(this.props.changeProgressTo)
+			this.props.changeProgressSucc();
+		}
+	}
+
 	render(){
 		let loop = false
 		if (this.props.playStyle === 'single'){
@@ -34,7 +49,8 @@ class Player extends Component{
 	                muted={this.props.muted}
 	                ref="player"
 	                loop={loop}
-	                onEnded={this.props.playNext}
+					onEnded={this.props.playNext}
+					onReady={this.onReady}
 	            />
    			</div>
 			);
