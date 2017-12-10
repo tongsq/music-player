@@ -1,12 +1,13 @@
 import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {Route} from 'react-router'
+import {Route,Link} from 'react-router-dom'
 //import {withRouter,Redirect,BrowserRouter as Router,Link} from 'react-router-dom'
 
 import './controlbar.less'
-import {playPrev,playNext,togglePlay,togglePlayStyle} from '../actions'
+import {playPrev,playNext,togglePlay,togglePlayStyle,progressChange} from '../actions'
 import musicLogo from '../assets/image/logo.png'
+import {PlayProgress} from './progress'
 
 class ControlItem extends Component{
     static defaultProps = {
@@ -23,7 +24,6 @@ class ShowListItem extends Component{
         this.showList = this.showList.bind(this)
     }
     showList(){
-        console.log(this.props)
         if (this.props.match){
             this.props.history.goBack()
         }else{
@@ -32,7 +32,7 @@ class ShowListItem extends Component{
         
     }
     render(){
-        let diyStyle = ''
+        let diyStyle = 'common-item'
         if (this.props.match)
             diyStyle = 'onhover'
         return(
@@ -57,20 +57,29 @@ class ControlBar extends Component{
             playStyle = "\ue609"
         }
         return(
-            <div className="row components-controlbar">
-                <div className="left-img">
-                    <img src={musicLogo} alt=""/>
+            <div>
+                <PlayProgress
+                progress={this.props.progress}
+                onProgressChange={this.props.progressChange}
+                isActive={this.props.isPlay ? true:false}
+                />
+                <div className="row components-controlbar">
+                    <Link to="/player">
+                    <div className="left-img">
+                        <img src={musicLogo} alt=""/>
+                    </div>
+                    </Link>
+                    <div className=""></div>
+                    <ul className="control-part1 -col-auto">
+                        <Route path="/musiclist" exact children={props=>(<ShowListItem {...props} />)}/>
+                        <ControlItem value={playStyle} clickHandle={this.props.togglePlayStyle}/>
+                    </ul>
+                    <ul className="control-part2 -col-auto">
+                        <ControlItem value="&#xe605;" clickHandle={this.props.playPrev}/>
+                        <ControlItem value={playIcon} diyStyle={diyStyle} clickHandle={this.props.togglePlay}/>
+                        <ControlItem value="&#xe608;" clickHandle={this.props.playNext}/>
+                    </ul>
                 </div>
-                <div className=""></div>
-                <ul className="control-part1 -col-auto">
-                    <Route path="/musiclist" exact children={props=>(<ShowListItem {...props} />)}/>
-                    <ControlItem value={playStyle} clickHandle={this.props.togglePlayStyle}/>
-                </ul>
-                <ul className="control-part2 -col-auto">
-                    <ControlItem value="&#xe605;" clickHandle={this.props.playPrev}/>
-                    <ControlItem value={playIcon} diyStyle={diyStyle} clickHandle={this.props.togglePlay}/>
-                    <ControlItem value="&#xe608;" clickHandle={this.props.playNext}/>
-                </ul>
             </div>
         );
     }
@@ -82,6 +91,7 @@ const mapStateToProps = state =>{
         isPlay: player.isPlay,
         volume: player.volume,
         playStyle: player.playStyle,
+        progress: player.progress,
 		//changeProgressTo: player.changeProgressTo
     }
 }
@@ -90,7 +100,8 @@ const mapDispatchToProps = dispatch =>{
         playPrev,
         playNext,
         togglePlay,
-        togglePlayStyle
+        togglePlayStyle,
+        progressChange
     }, dispatch);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ControlBar);

@@ -164,7 +164,7 @@
 
 .fl{ float: left;}
 .fr{ float: right;}
-
+/*
 .icon {
     display: inline-block;
     width: 32px;
@@ -201,7 +201,7 @@
     background-size: 16px auto;    
     background-position: 0 -112px;
 }
-
+*/
 @font-face {
     font-family: 'iconfont_music';
     src: url('../font/iconfont.eot');

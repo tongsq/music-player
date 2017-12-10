@@ -2,7 +2,6 @@ import React,{Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
-import {PlayProgress} from '../components/progress'
 import {progressChange} from '../actions'
 import './playerpage.less'
 import errorImg from '../assets/image/logo.png'
@@ -47,13 +46,8 @@ class PlayerPage extends Component{
                         <div className="-col-auto cover">
                   		<CoverImg src={this.props.currentItem.cover} alt={this.props.currentItem.title} isActive={this.props.isPlay}/>
                     	</div>
-                        </div>
                     </div>
-                    <PlayProgress
-    					progress={this.props.progress}
-                        onProgressChange={this.props.progressChange}
-                        isActive={this.props.isPlay ? true:false}
-    		        />
+                </div>
             </div>
         )
     }

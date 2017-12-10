@@ -12,6 +12,7 @@ import './assets/css/reset.css'
 import MusicListPage from './page/musiclist'
 import Player from './components/player'
 import PlayerPage from './page/playerpage'
+import IndexPage from './page/indexpage'
 import ControllBar from './components/controlbar'
 class App extends Component {
   
@@ -29,8 +30,9 @@ class App extends Component {
           <div className="container center mt50">
             <Player />
             <div className="body-container">
+            <Route path="/" exact component={IndexPage} />
             <Route path="/musiclist" component={MusicListPage} />
-            <Route path="/" exact component={PlayerPage} />
+            <Route path="/player" exact component={PlayerPage} />
             </div>
             <Route path="/" component={ControllBar} />
           </div>
