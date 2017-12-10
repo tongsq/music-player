@@ -20,7 +20,7 @@ class MusicListItem extends Component{
                 title={this.props.item.title} 
                 artist={this.props.item.artist} 
                 playItem={()=>this.props.playItem(this.props.item)}
-                active={this.props.item===this.props.currentItem}/>
+                active={this.props.item.id===this.props.currentItem.id && this.props.item.file===this.props.currentItem.file}/>
             </li>
         );
     }
