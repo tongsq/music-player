@@ -70,10 +70,7 @@ export default (state = initialState, action)=>{
 	else if(action.type === 'changeProgressSucc'){
 		return {...state, changeProgressTo:false}
 	}else if(action.type === 'togglePlayStyle'){
-		let styleList = ["rand", "list", "single"]
-		let index = styleList.indexOf(state.playStyle)
-		let newIndex = (index + 1) % styleList.length
-		return {...state, playStyle: styleList[newIndex]}
+		return {...state, playStyle: action.playStyle}
 	}
 	else{
 		return state

@@ -2,6 +2,7 @@ import {createStore,applyMiddleware} from 'redux';
 import {createLogger} from 'redux-logger';
 import {persistStore,persistCombineReducers,/*persistReducer*/} from 'redux-persist'
 import storage from 'redux-persist/es/storage'
+import thunk from 'redux-thunk'
 
 import reducers from './reducers';
 import {progressChangeStore} from './actions';
@@ -12,7 +13,7 @@ const config = {
 	storage,
 }
 const reducer = persistCombineReducers(config, reducers)
-const middlewares = [];
+const middlewares = [thunk];
 if (IS_DEV) {
     middlewares.push(createLogger({
         duration: true,

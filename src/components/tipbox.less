@@ -1,0 +1,22 @@
+.notshow{
+	display: none;
+}
+.components-tipbox{	
+	position: absolute;
+	top: 550px;
+	height: 50px;
+	.content{
+		color: #fff;
+		font-size: 14px;
+		padding: 2px 15px 6px 15px;
+		background: rgba(0,0,0,1);
+		border-radius: 10px;
+		//transition: opacity 1s linear;
+		animation: show normal 1s linear;
+	    @keyframes show {
+	    	0% { opacity: 0;}
+	    	50% { opacity: 1;}
+	    	100% { opacity: 0;}
+	    }
+	}
+}

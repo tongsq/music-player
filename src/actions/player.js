@@ -1,3 +1,4 @@
+import {showTip} from './sys'
 export const playItem = item =>{
 	return {type:'playItem', item:item}
 }
@@ -26,5 +27,21 @@ export const changeProgressSucc = () =>{
 	return {'type': 'changeProgressSucc'};
 }
 export const togglePlayStyle = () =>{
-	return {'type': 'togglePlayStyle'}
+	return (dispatch, getState)=>{
+		let styleList = ["rand", "list", "single"]
+		let styleListMsg = ["随机播放", "列表循环", "单曲循环"]
+		let state = getState().player
+		let index = findIndex(styleList,state.playStyle)
+		let newIndex = (index + 1) % styleList.length
+		dispatch(showTip(styleListMsg[newIndex]))
+		dispatch({'type': 'togglePlayStyle', playStyle: styleList[newIndex]})
+	}
+}
+function findIndex(list, item){
+	for(let i=0; i<list.length; i++){
+		if (list[i] === item){
+			return i
+		}
+	}
+	return 0
 }

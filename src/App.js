@@ -14,6 +14,7 @@ import Player from './components/player'
 import PlayerPage from './page/playerpage'
 import IndexPage from './page/indexpage'
 import ControllBar from './components/controlbar'
+import TipBox from './components/tipbox'
 class App extends Component {
   
   componentDidMount(){
@@ -27,14 +28,17 @@ class App extends Component {
     return (
       <Provider store={store}>
         <Router>
-          <div className="container center mt50">
+          <div>
             <Player />
-            <div className="body-container">
-            <Route path="/" exact component={IndexPage} />
-            <Route path="/musiclist" component={MusicListPage} />
-            <Route path="/player" exact component={PlayerPage} />
+            <div className="container center mt50">
+              <div className="body-container">
+              <Route path="/" exact component={IndexPage} />
+              <Route path="/musiclist" component={MusicListPage} />
+              <Route path="/player" exact component={PlayerPage} />
+              </div>
+              <Route path="/" component={ControllBar} />
             </div>
-            <Route path="/" component={ControllBar} />
+            <TipBox />
           </div>
         </Router>
       </Provider>
