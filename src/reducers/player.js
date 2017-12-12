@@ -71,6 +71,8 @@ export default (state = initialState, action)=>{
 		return {...state, changeProgressTo:false}
 	}else if(action.type === 'togglePlayStyle'){
 		return {...state, playStyle: action.playStyle}
+	}else if(action.type === 'setDuration'){
+		return {...state, duration: action.duration}
 	}
 	else{
 		return state

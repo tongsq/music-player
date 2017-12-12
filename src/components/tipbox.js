@@ -19,10 +19,6 @@ class TipBox extends Component{
 		},1000)
 	}
 	render(){
-		let style = {}
-		if (!this.props.tipMsg){
-			style.opacity = 0
-		}
 		return(
 			<div className={`components-tipbox center2 ${this.props.tipMsg?'':'notshow'}`}>
 				<p className="content">

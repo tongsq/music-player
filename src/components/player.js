@@ -3,15 +3,15 @@ import {connect} from 'react-redux';
 import ReactPlayer from 'react-player';
 import {bindActionCreators} from 'redux';
 
-import {updateProgress,changeProgressSucc,playNext} from '../actions';
+import {updateProgress,changeProgressSucc,playNext,setDuration} from '../actions';
 class Player extends Component{
 	constructor(props){
 		super(props)
 		this.onReady = this.onReady.bind(this)
 	}
 	componentWillReceiveProps(newProps){
+		
 		if (newProps.changeProgressTo !== false){
-			
 			//选择播放进度
 			let changeTo = newProps.changeProgressTo
 			let player = this.refs.player
@@ -26,8 +26,12 @@ class Player extends Component{
 		
 	}
 	onReady(){
+		let player = this.refs.player
+		let duration = player.getDuration()
+		console.log('ready',duration)
+		this.props.setDuration(duration)
 		if (this.props.changeProgressTo !== false){
-			this.refs.player.seekTo(this.props.changeProgressTo)
+			player.seekTo(this.props.changeProgressTo)
 			this.props.changeProgressSucc();
 		}
 	}
@@ -71,7 +75,8 @@ const mapDispatchToProps = dispatch =>{
     return bindActionCreators({
 		onProgress: updateProgress,
 		changeProgressSucc: changeProgressSucc,
-		playNext
+		playNext,
+		setDuration
     }, dispatch);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Player);

@@ -37,6 +37,9 @@ export const togglePlayStyle = () =>{
 		dispatch({'type': 'togglePlayStyle', playStyle: styleList[newIndex]})
 	}
 }
+export const setDuration = (duration) =>{
+	return {'type':'setDuration', duration}
+}
 function findIndex(list, item){
 	for(let i=0; i<list.length; i++){
 		if (list[i] === item){

@@ -50,7 +50,7 @@ export class PlayProgress extends Component{
         this.setState({showTime:false})
     }
     render() {
-        let {progress} = this.props
+        let {progress,duration} = this.props
         let timeBoxStyle = {opacity: 0}
         if (progress < 50){
             timeBoxStyle.left = progress + '%'
@@ -60,6 +60,7 @@ export class PlayProgress extends Component{
         if (this.state.showTime){
             timeBoxStyle.opacity = 1
         }
+        let timeMsg = getTimeMsg(duration, progress)
         return (
             <div className="components-playprogress-body" ref="progressBar" 
                  onClick={this.changeProgress} 
@@ -70,10 +71,17 @@ export class PlayProgress extends Component{
                         <i className={this.props.isActive? "active":""}></i>
                     </div>
                 </div>
-                <div className="time-box" style={timeBoxStyle}>00:58/04:00</div>
+                <div className="time-box" style={timeBoxStyle}>{timeMsg}</div>
             </div>
         );
     }
 }
-
+function getTimeMsg(duration, progress){
+    let played = progress * duration / 100
+    let playedM =  Math.floor(played / 60)
+    let playedS = Math.floor(played % 60)
+    let totalM = Math.floor(duration / 60)
+    let totalS = Math.floor(duration % 60)
+    return `${playedM}:${playedS}/${totalM}:${totalS}`
+}
 export default Progress;

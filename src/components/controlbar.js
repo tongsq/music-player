@@ -84,6 +84,7 @@ class ControlBar extends Component{
                 progress={this.props.progress}
                 onProgressChange={this.props.progressChange}
                 isActive={this.props.isPlay ? true:false}
+                duration={this.props.duration}
                 />
                 <div className="row components-controlbar">
                     <Link to="/player">
@@ -114,6 +115,7 @@ const mapStateToProps = state =>{
         volume: player.volume,
         playStyle: player.playStyle,
         progress: player.progress,
+        duration: player.duration,
 		//changeProgressTo: player.changeProgressTo
     }
 }
