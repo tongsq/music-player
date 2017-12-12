@@ -42,7 +42,29 @@ class ShowListItem extends Component{
 }
 
 class ControlBar extends Component{
-    
+    constructor(props){
+        super(props)
+        this.keyEvent = this.keyEvent.bind(this)
+    }
+    componentDidMount(){
+        window.addEventListener('keypress',this.keyEvent)
+    }
+    componentWillUnmount(){
+        window.removeEventListener('keypress')
+    }
+    keyEvent(e){
+        let keyCode = e.keyCode
+        if (keyCode === 0){
+            //空格
+            this.props.togglePlay()
+        }else if (keyCode === 39){
+            //->
+            this.props.playNext()
+        }else if (keyCode === 37){
+            //<-
+            this.props.playPrev()
+        }
+    }
     render(){
         let playIcon = "\ue606"
         let diyStyle = "play-item-notactive"
