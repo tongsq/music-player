@@ -28,5 +28,10 @@
 }
 .body-container{
   height:600px;
-  border:1px solid #ccc;
+  //border:1px solid #ccc;
+}
+.app{
+  width:960px;
+  box-shadow:5px 0px 20px 0px rgba(0,0,0,1);
+  border-radius: 20px;
 }

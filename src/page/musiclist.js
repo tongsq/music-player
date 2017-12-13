@@ -16,9 +16,11 @@ class MusicList extends Component{
     }
     render(){
 	    return (
-	        <ul className="musiclist-page" style={{opacity:this.state.opacity}}>
-	            {this.props.MusicListData.map((item,index)=><MusicListItem item={item} key={index}/>)}
-	        </ul>
+            <div style={{background:'#fff'}}>
+    	        <ul className="musiclist-page" style={{opacity:this.state.opacity}}>
+    	            {this.props.MusicListData.map((item,index)=><MusicListItem item={item} key={index}/>)}
+    	        </ul>
+            </div>
 	    );
     }
 }
