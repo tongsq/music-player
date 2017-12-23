@@ -16,22 +16,15 @@ class TipBox extends Component{
 	componentWillReceiveProps(newProp){
 		if (newProp.tipMsg && newProp.tipMsg !== this.props.tipMsg){
 			this.showTip(newProp.tipMsg)
-			this.setState({in: true})
+			this.setState({in: !this.state.in})
 		}else{
-			this.setState({in: false})
+			//this.setState({in: false})
 		}
-	}
-	componentDidUpdate(){
-		// let tipContent = this.refs.tipContent
-		// if (this.props.tipMsg)
-		// 	tipContent.className = tipContent.className + ' hide'
-		
-		
 	}
 	showTip(tipMsg){
 		setTimeout(()=>{
 			this.props.showTipSucc(tipMsg)
-		},1000)
+		},1500)
 	}
 	render(){
 		const defaultStyle = {
@@ -40,11 +33,13 @@ class TipBox extends Component{
 		}
 		const transitionStyles = {
 			entering: {opacity: 1},
-			entered: {opacity: 0}
+			entered: {opacity: 0},
+			exiting: {opacity: 1},
+			exited: {opacity: 0}
 		}
 		return(
 			<div className={`components-tipbox center2 ${this.props.tipMsg?'show':'notshow'}`}>
-				<Transition in={this.state.in} timeout={0}>
+				<Transition in={this.state.in} timeout={500}>
 					{(state) =>(
 						<p className='content'
 							style={{
