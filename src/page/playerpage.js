@@ -35,17 +35,40 @@ class CoverImg extends Component{
         )
     }
 }
+class MusicInfo extends Component{
+    render(){
+        return (
+            <div>
+                <h2 className="music-title">{this.props.title}</h2>
+                <h3 className="music-artist">{this.props.artist}</h3>
+            </div>
+        )
+    }
+}
 class PlayerPage extends Component{
 
     render(){
+        //背景图片
+        let containerStyle = {background:`#f5f5f5 url('${this.props.currentItem.cover}')`}
+        //当前播放图片
+        let deg = ((this.props.duration * this.props.progress / 100) % 20) * 360 
+        if (isNaN(deg))
+            deg = 0
+        let coverStyle = {transform:`rotate(${deg}deg)`}
         return (
-            <div className="playerpage-container">
+            <div className="playerpage-container" style={{...containerStyle}}>
                 <div className="glass"></div>
-                    <div className="playerpage">
-                        <div className="row">
-                        <div className="-col-auto cover">
-                  		<CoverImg src={this.props.currentItem.cover} alt={this.props.currentItem.title} isActive={this.props.isPlay}/>
-                    	</div>
+                <div className="playerpage">
+                    <div className="row">
+                        <div className="-col-auto cover" style={{...coverStyle}}>
+                  		    <CoverImg src={this.props.currentItem.cover} alt={this.props.currentItem.title} isActive={this.props.isPlay}/>
+                        </div>
+                        <div className="music-info">
+                            <MusicInfo 
+                                title={this.props.currentItem.title}
+                                artist={this.props.currentItem.artist}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -54,11 +77,12 @@ class PlayerPage extends Component{
 }
 
 const mapStateToProps = state =>{
-    let {progress,currentItem,isPlay} = state.player
+    let {progress,currentItem,isPlay,duration} = state.player
     return{       
         progress,
         currentItem,
-        isPlay
+        isPlay,
+        duration
     }
 }
 const mapDispatchToProps = dispatch =>{

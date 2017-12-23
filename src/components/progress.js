@@ -82,6 +82,9 @@ function getTimeMsg(duration, progress){
     let playedS = Math.floor(played % 60)
     let totalM = Math.floor(duration / 60)
     let totalS = Math.floor(duration % 60)
+    if (isNaN(playedM) || isNaN(playedS) || isNaN(totalM) || isNaN(totalS)){
+        return "---:---"
+    }
     return `${playedM}:${playedS}/${totalM}:${totalS}`
 }
 export default Progress;
