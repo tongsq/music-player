@@ -4,8 +4,8 @@
     //background-attachment: fixed;
    	background-repeat: no-repead;
     .glass{
-    	-webkit-filter: blur(3px);
-    	filter: blur(3px);
+    	-webkit-filter: blur(10px);
+    	filter: blur(10px);
     	height:100%;
     	background:inherit;
     }
@@ -23,14 +23,14 @@
                 height: 180px;
                 border-radius: 50%;
             }
-            .active{
-                //animation: cover-img infinite 20s linear;
-                transition: transform 1s linear;
-            }
-            @keyframes cover-img {
-                from { transform: rotate(0deg);}
-                to { transform: rotate(360deg);}
-            }
+        }
+        .active{
+            //animation: cover-img infinite 20s linear;
+            // @keyframes cover-img {
+            //     from { transform: rotate(0deg);}
+            //     to { transform: rotate(360deg);}
+            // }
+            transition: transform 1s linear;
         }
         .music-info{
             margin-left: 200px;

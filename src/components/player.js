@@ -28,7 +28,6 @@ class Player extends Component{
 	onReady(){
 		let player = this.refs.player
 		let duration = player.getDuration()
-		console.log('ready',duration)
 		this.props.setDuration(duration)
 		if (this.props.changeProgressTo !== false){
 			player.seekTo(this.props.changeProgressTo)

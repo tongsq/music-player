@@ -46,22 +46,35 @@ class MusicInfo extends Component{
     }
 }
 class PlayerPage extends Component{
-
+    constructor(props){
+        super(props)
+        this.state = {showCoverTransition: false}
+    }
+    componentWillReceiveProps(newProps){
+        if (((this.props.duration * (newProps.progress - this.props.progress)) > 110 || newProps.progress === 0) && this.state.showCoverTransition){        
+            this.setState({showCoverTransition: false})
+        }else if((this.props.progress !== newProps.progress) && !this.state.showCoverTransition){
+            this.setState({showCoverTransition: true})
+        }
+    }
     render(){
         //背景图片
         let containerStyle = {background:`#f5f5f5 url('${this.props.currentItem.cover}')`}
         //当前播放图片
-        let deg = ((this.props.duration * this.props.progress / 100) % 20) * 360 
+        let deg = ((this.props.duration * this.props.progress / 100)) * 12 
         if (isNaN(deg))
             deg = 0
         let coverStyle = {transform:`rotate(${deg}deg)`}
-        return (
+        let coverClass = "-col-auto cover"
+        if (this.state.showCoverTransition)
+            coverClass = "-col-auto cover active"
+        return ( 
             <div className="playerpage-container" style={{...containerStyle}}>
                 <div className="glass"></div>
                 <div className="playerpage">
                     <div className="row">
-                        <div className="-col-auto cover" style={{...coverStyle}}>
-                  		    <CoverImg src={this.props.currentItem.cover} alt={this.props.currentItem.title} isActive={this.props.isPlay}/>
+                        <div className={coverClass} style={{...coverStyle}}>
+                  		    <CoverImg src={this.props.currentItem.cover} alt={this.props.currentItem.title}/>
                         </div>
                         <div className="music-info">
                             <MusicInfo 
