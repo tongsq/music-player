@@ -32,7 +32,7 @@ class App extends Component {
             <Player />
             <div className="app center mt100">
               <div className="body-container">
-              <Route path="/" exact component={IndexPage} />
+              <Route path="/" exact component={PlayerPage} />
               <Route path="/musiclist" component={MusicListPage} />
               <Route path="/player" exact component={PlayerPage} />
               </div>

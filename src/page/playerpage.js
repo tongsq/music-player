@@ -51,7 +51,8 @@ class PlayerPage extends Component{
         this.state = {showCoverTransition: false}
     }
     componentWillReceiveProps(newProps){
-        if (((this.props.duration * (newProps.progress - this.props.progress)) > 110 || newProps.progress === 0) && this.state.showCoverTransition){        
+        let changeValue = this.props.duration * (newProps.progress - this.props.progress)
+        if ((changeValue < 0 || changeValue > 110 || newProps.progress === 0) && this.state.showCoverTransition){        
             this.setState({showCoverTransition: false})
         }else if((this.props.progress !== newProps.progress) && !this.state.showCoverTransition){
             this.setState({showCoverTransition: true})
