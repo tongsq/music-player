@@ -1,14 +1,15 @@
 import musicList from '../config/musiclist'
 
 const initialState = {
-	currentItem: musicList[0],
-	musicList:musicList,
-	isPlay:false,
-	progress:0,
-	volume:50,
-	changeProgressTo:false,
-	playStyle:"rand",
-	muted:false
+	currentItem: musicList[0],//当前播放项
+	musicList:musicList,//当前播放列表
+	isPlay:false,//播放or暂停
+	progress:0,//进度
+	volume:50,//声音
+	changeProgressTo:false,//选择播放进度
+	playStyle:"rand",//循环模式
+	muted:false,//是否静音
+	
 }
 export default (state = initialState, action)=>{
 	if (action.type === 'updateProgress'){
