@@ -28,7 +28,8 @@ class Progress extends Component{
 }
 export class PlayProgress extends Component{
     static defaultProps = {
-        isActive: false
+        isActive: false,
+        showTransition: true,
     }
     constructor(props){
         super(props)
@@ -37,7 +38,15 @@ export class PlayProgress extends Component{
         this.showPlayTime = this.showPlayTime.bind(this)
         this.hidePlayTime = this.hidePlayTime.bind(this)
     }
-    
+    componentWillReceiveProps(newProps){
+        console.log(newProps)
+        let change = newProps.progress - this.props.progress
+        if ((change < 0 || change > 2) &&　this.state.showTransition){
+            this.setState({showTransition: false})
+        }else if(!this.state.showTransition){
+            this.setState({showTransition: true})
+        }
+    }
     changeProgress(e){
         let progressBar = this.refs.progressBar
         let progress = (e.clientX - progressBar.getBoundingClientRect().left) / progressBar.clientWidth
@@ -61,13 +70,17 @@ export class PlayProgress extends Component{
             timeBoxStyle.opacity = 1
         }
         let timeMsg = getTimeMsg(duration, progress)
+        let progressStyle = {width:`${this.props.progress}%`}
+        if (this.state.showTransition){
+            progressStyle.transition = "width 1s linear"
+        }
         return (
             <div className="components-playprogress-body" ref="progressBar" 
                  onClick={this.changeProgress} 
                  onMouseOver={this.showPlayTime} 
                  onMouseOut={this.hidePlayTime}>
                 <div className="components-playprogress">
-                    <div className="progress" style={{width:`${this.props.progress}%`}}>
+                    <div className="progress" style={progressStyle}>
                         <i className={this.props.isActive? "active":""}></i>
                     </div>
                 </div>
