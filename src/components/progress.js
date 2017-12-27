@@ -39,7 +39,6 @@ export class PlayProgress extends Component{
         this.hidePlayTime = this.hidePlayTime.bind(this)
     }
     componentWillReceiveProps(newProps){
-        console.log(newProps)
         let change = newProps.progress - this.props.progress
         if ((change < 0 || change > 2) &&　this.state.showTransition){
             this.setState({showTransition: false})
