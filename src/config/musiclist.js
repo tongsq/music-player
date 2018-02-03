@@ -1,4 +1,4 @@
-let host = '';
+let host = 'http://m.tongsq.cc/';
 export default  [
 	{
 		id: 1,

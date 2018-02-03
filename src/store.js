@@ -10,6 +10,7 @@ import {IS_DEV} from './config/const'
 
 const config = {
 	key: 'root',
+	blacklist: 'player.musicList',
 	storage,
 }
 const reducer = persistCombineReducers(config, reducers)

@@ -1,6 +1,9 @@
 {
   "name": "music-player",
   "version": "0.1.0",
+  "main": "main.js",
+  "DEV": false,
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "autoprefixer": "7.1.6",
@@ -99,6 +102,7 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "electron": "^1.7.12",
     "less": "^2.7.3",
     "less-loader": "^4.0.5"
   }
