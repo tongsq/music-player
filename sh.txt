@@ -1,0 +1,2 @@
+electron-packager . myapp --win --out elec --arch=x64 --version 1.0.0 --overwrite --ignore=node_modules --no-prune
+
